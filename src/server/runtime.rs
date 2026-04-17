@@ -22,7 +22,7 @@ impl ServerRuntime {
         let server_info = ServerInfoBuilder::new().build();
         let handler = AdbHandler::new().to_mcp_server_handler();
 
-        match cli.mode {
+        match cli.transport_mode {
             Mode::Http => Self::start_http(server_info, handler, cli.port).await,
             Mode::Stdio => Self::start_stdio(server_info, handler).await,
         }

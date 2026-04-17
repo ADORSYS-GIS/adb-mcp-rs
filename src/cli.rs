@@ -5,9 +5,14 @@ use clap::Parser;
 #[command(about = "ADB MCP Server for Android device interaction")]
 #[command(version)]
 pub struct Cli {
-    /// Server mode: 'stdio' or 'http'
-    #[arg(value_enum, default_value = "stdio")]
-    pub mode: Mode,
+    /// Transport mode: 'stdio' or 'http'
+    #[arg(
+        long,
+        value_enum,
+        default_value = "stdio",
+        env = "ADB_MCP_TRANSPORT_MODE"
+    )]
+    pub transport_mode: Mode,
 
     /// Port for HTTP mode
     #[arg(short, long, default_value = "8080", env = "ADB_MCP_PORT")]

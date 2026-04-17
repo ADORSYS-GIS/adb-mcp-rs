@@ -42,7 +42,7 @@ src/
 ## Features
 
 - **Rust 2024 Edition**
-- **clap** CLI with ENV var support (`ADB_MCP_PORT`, `ADB_MCP_LOG_LEVEL`)
+- **clap** CLI with ENV var support (`ADB_MCP_TRANSPORT_MODE`, `ADB_MCP_PORT`, `ADB_MCP_LOG_LEVEL`)
 - **mimalloc** - High-performance allocator
 - **cuid2** - Collision-resistant IDs
 - **CORS enabled** - Full cross-origin support for HTTP mode
@@ -57,12 +57,12 @@ cargo build --release
 ## Usage
 
 ```bash
-# stdio mode
+# stdio mode (default)
 ./adb-mcp
 
 # HTTP mode
-./adb-mcp http -p 8080
-ADB_MCP_PORT=3000 ./adb-mcp http
+./adb-mcp --transport-mode http -p 8080
+ADB_MCP_TRANSPORT_MODE=http ADB_MCP_PORT=3000 ./adb-mcp
 
 # With debug logging
 ./adb-mcp -l debug
@@ -70,10 +70,11 @@ ADB_MCP_PORT=3000 ./adb-mcp http
 
 ## Environment Variables
 
-| Variable            | Default | Description                             |
-|---------------------|---------|-----------------------------------------|
-| `ADB_MCP_PORT`      | 8080    | HTTP server port                        |
-| `ADB_MCP_LOG_LEVEL` | info    | Log level (trace/debug/info/warn/error) |
+| Variable                  | Default | Description                             |
+|---------------------------|---------|-----------------------------------------|
+| `ADB_MCP_TRANSPORT_MODE`  | stdio   | Transport mode: `stdio` or `http`       |
+| `ADB_MCP_PORT`            | 8080    | HTTP server port                        |
+| `ADB_MCP_LOG_LEVEL`       | info    | Log level (trace/debug/info/warn/error) |
 
 ## Tool Categories
 
