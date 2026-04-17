@@ -4,7 +4,11 @@ version = "0.1.0"
 edition = "2024"
 description = "ADB MCP Server with stdio and streamable HTTP support"
 license = "MIT"
-repository = "https://github.com/user/adb-mcp"
+repository = "https://github.com/ADORSYS-GIS/adb-mcp-rs"
+authors = [
+    "Stephane Segning <selastlambou@gmail.com>",
+    "adorsys GIS <gis-udm@adorsys.com>",
+]
 
 [dependencies]
 rust-mcp-sdk = { version = "0.9", default-features = false, features = [
@@ -33,7 +37,8 @@ http = "1.4.0"
 axum-server = "0.8.0"
 
 [profile.release]
-lto = "thin"
+lto = true
+opt-level = "z"
 codegen-units = 1
+incremental = false
 strip = true
-opt-level = 3
