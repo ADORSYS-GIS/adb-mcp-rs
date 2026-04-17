@@ -1,4 +1,5 @@
 mod handler;
+mod http_cors;
 mod info;
 mod runtime;
 

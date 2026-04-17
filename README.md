@@ -34,6 +34,7 @@ src/
 │   └── network.rs   # Port forwarding, wireless
 └── server/
     ├── handler.rs   # ServerHandler impl
+    ├── http_cors.rs # CORS-enabled HTTP server
     ├── info.rs      # Server info builder
     └── runtime.rs   # Server startup
 ```
@@ -44,6 +45,7 @@ src/
 - **clap** CLI with ENV var support (`ADB_MCP_PORT`, `ADB_MCP_LOG_LEVEL`)
 - **mimalloc** - High-performance allocator
 - **cuid2** - Collision-resistant IDs
+- **CORS enabled** - Full cross-origin support for HTTP mode
 - **33 tools** across 7 categories
 
 ## Installation
@@ -132,6 +134,8 @@ adb_connect(host: "192.168.1.100")
 - `mimalloc` - Memory allocator
 - `cuid2` - Collision-resistant IDs
 - `thiserror` - Error derive
+- `axum` - Web framework
+- `tower-http` - CORS middleware
 
 ## License
 
