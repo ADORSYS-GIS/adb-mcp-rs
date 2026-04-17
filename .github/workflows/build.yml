@@ -11,22 +11,18 @@ on:
       - 'Cargo.toml'
       - 'Cargo.lock'
       - 'Dockerfile'
+      - 'src/**'
       - '.dockerignore'
 
 env:
   CARGO_TERM_COLOR: always
   REGISTRY: ghcr.io
-  IMAGE_NAME: ADORSYS-GIS/wazuh-cert-oauth2
+  IMAGE_NAME: ADORSYS-GIS/adb-mcp-rs
 
 jobs:
   build:
     name: Docker build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-            suffix: ""
-            docker_target: "oauth2"
     permissions:
       packages: write
       contents: read
@@ -94,7 +90,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           annotations: ${{ steps.meta.outputs.annotations }}
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           provenance: true
