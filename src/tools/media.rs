@@ -105,7 +105,7 @@ fn handle_ui_hierarchy(
     args: Map<String, serde_json::Value>,
     ctx: &dyn ToolContext,
 ) -> Result<ToolResult, ToolError> {
-    let params: UiHierarchyParams = serde_json::from_value(serde_json::Value::Object(args))?;
+    let _params: UiHierarchyParams = serde_json::from_value(serde_json::Value::Object(args))?;
 
     ctx.execute_shell("uiautomator dump /sdcard/ui_hierarchy.xml")?;
     let xml = ctx.execute_shell("cat /sdcard/ui_hierarchy.xml")?;

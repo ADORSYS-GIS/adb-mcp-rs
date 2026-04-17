@@ -38,15 +38,6 @@ impl std::fmt::Display for Mode {
     }
 }
 
-impl Mode {
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            Mode::Stdio => "stdio",
-            Mode::Http => "http",
-        }
-    }
-}
-
 impl Cli {
     pub fn parse_args() -> Self {
         Self::parse()

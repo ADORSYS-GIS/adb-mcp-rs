@@ -2,6 +2,7 @@ use mimalloc::MiMalloc;
 
 mod adb;
 mod cli;
+mod id_gen;
 mod server;
 mod tools;
 

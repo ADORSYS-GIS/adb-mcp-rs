@@ -219,7 +219,7 @@ fn handle_usb(
     args: Map<String, serde_json::Value>,
     ctx: &dyn ToolContext,
 ) -> Result<ToolResult, ToolError> {
-    let params: UsbParams = serde_json::from_value(serde_json::Value::Object(args))?;
+    let _params: UsbParams = serde_json::from_value(serde_json::Value::Object(args))?;
     ctx.execute_adb(vec!["usb"])?;
     Ok(ToolResult::ok("Switched to USB mode"))
 }
@@ -274,7 +274,7 @@ fn handle_list_forward(
     args: Map<String, serde_json::Value>,
     ctx: &dyn ToolContext,
 ) -> Result<ToolResult, ToolError> {
-    let params: ListForwardParams = serde_json::from_value(serde_json::Value::Object(args))?;
+    let _params: ListForwardParams = serde_json::from_value(serde_json::Value::Object(args))?;
     let output = ctx.execute_adb(vec!["forward", "--list"])?;
     Ok(ToolResult::ok(output))
 }
@@ -283,7 +283,7 @@ fn handle_list_reverse(
     args: Map<String, serde_json::Value>,
     ctx: &dyn ToolContext,
 ) -> Result<ToolResult, ToolError> {
-    let params: ListReverseParams = serde_json::from_value(serde_json::Value::Object(args))?;
+    let _params: ListReverseParams = serde_json::from_value(serde_json::Value::Object(args))?;
     let output = ctx.execute_adb(vec!["reverse", "--list"])?;
     Ok(ToolResult::ok(output))
 }

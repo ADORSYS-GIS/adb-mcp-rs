@@ -16,13 +16,6 @@ impl AdbContext {
         }
     }
 
-    pub fn with_device(&self, device: impl Into<String>) -> Self {
-        Self {
-            device: Some(device.into()),
-            executor: self.executor.clone(),
-        }
-    }
-
     pub fn shell_cmd(&self, cmd: &str) -> AdbCommand {
         let mut command = AdbCommand::shell(cmd);
         if let Some(ref d) = self.device {
@@ -33,10 +26,6 @@ impl AdbContext {
 }
 
 impl ToolContext for AdbContext {
-    fn device(&self) -> Option<&str> {
-        self.device.as_deref()
-    }
-
     fn execute_shell(&self, cmd: &str) -> Result<String, ToolError> {
         let command = self.shell_cmd(cmd);
         let output = self.executor.execute(command)?;

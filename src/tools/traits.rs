@@ -1,11 +1,4 @@
-use rust_mcp_sdk::macros::JsonSchema;
-use serde::{Deserialize, Serialize, de::DeserializeOwned};
-
-#[derive(Debug, Clone, Deserialize, Serialize, JsonSchema)]
-pub struct DeviceRef {
-    #[serde(default)]
-    pub device: Option<String>,
-}
+// All trait types are re-exported through rust_mcp_sdk macros
 
 #[derive(Debug, Clone)]
 pub struct ToolResult {

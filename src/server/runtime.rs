@@ -1,7 +1,7 @@
+use crate::id_gen::CuidGenerator;
 use rust_mcp_sdk::{
     McpServer, McpServerHandler, StdioTransport, ToMcpServerHandler, TransportOptions,
     error::SdkResult,
-    id_generator::UuidGenerator,
     mcp_http::McpHttpHandler,
     mcp_server::{HyperServerOptions, McpAppState, McpServerOptions, server_runtime},
     schema::InitializeResult,
@@ -56,7 +56,7 @@ impl ServerRuntime {
 
         let state = Arc::new(McpAppState {
             session_store: Arc::new(InMemorySessionStore::new()),
-            id_generator: Arc::new(UuidGenerator {}),
+            id_generator: Arc::new(CuidGenerator::new()),
             stream_id_gen: Arc::new(rust_mcp_sdk::id_generator::FastIdGenerator::new(Some("s_"))),
             server_details: Arc::new(server_info),
             handler,

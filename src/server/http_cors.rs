@@ -56,11 +56,11 @@ impl CorsServer {
     ) -> rust_mcp_sdk::error::SdkResult<()> {
         let addr: SocketAddr = format!("{}:{}", options.host, options.port)
             .parse()
-            .map_err(|e: std::net::AddrParseError| {
-                rust_mcp_sdk::error::McpSdkError::Internal {
+            .map_err(
+                |e: std::net::AddrParseError| rust_mcp_sdk::error::McpSdkError::Internal {
                     description: e.to_string(),
-                }
-            })?;
+                },
+            )?;
 
         let router = Self::build_router(state, http_handler, &options);
 

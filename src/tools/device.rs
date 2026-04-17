@@ -52,9 +52,10 @@ fn handle_device_info(
     ctx: &dyn ToolContext,
 ) -> Result<ToolResult, ToolError> {
     let params: DeviceInfoParams = serde_json::from_value(serde_json::Value::Object(args))?;
-    let device_ctx = if let Some(ref d) = params.device {
-        ctx.execute_adb(vec!["-s", d])?;
-    };
+    // Verify device exists if specified
+    if let Some(ref d) = params.device {
+        ctx.execute_adb(vec!["-s", d, "get-state"])?;
+    }
 
     let mut info = String::new();
     info.push_str("=== Device Info ===\n");

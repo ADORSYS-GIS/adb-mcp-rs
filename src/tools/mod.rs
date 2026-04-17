@@ -28,7 +28,6 @@ pub fn build_registry() -> ToolRegistry {
 }
 
 pub trait ToolContext: Send + Sync {
-    fn device(&self) -> Option<&str>;
     fn execute_shell(&self, cmd: &str) -> Result<String, ToolError>;
     fn execute_adb(&self, args: Vec<&str>) -> Result<String, ToolError>;
 }

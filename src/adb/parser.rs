@@ -67,11 +67,11 @@ pub fn find_element_in_xml(
     let mut current_index = 0;
 
     for line in xml.lines() {
-        let matches_text = text.map_or(true, |t| line.contains(&format!("text=\"{}\"", t)));
+        let matches_text = text.is_none_or(|t| line.contains(&format!("text=\"{}\"", t)));
         let matches_id =
-            resource_id.map_or(true, |id| line.contains(&format!("resource-id=\"{}\"", id)));
+            resource_id.is_none_or(|id| line.contains(&format!("resource-id=\"{}\"", id)));
         let matches_desc =
-            content_desc.map_or(true, |d| line.contains(&format!("content-desc=\"{}\"", d)));
+            content_desc.is_none_or(|d| line.contains(&format!("content-desc=\"{}\"", d)));
 
         if matches_text && matches_id && matches_desc {
             if current_index == index {

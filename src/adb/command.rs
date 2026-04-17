@@ -6,9 +6,10 @@ pub struct AdbCommand {
     subcommand: AdbSubcommand,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub enum AdbSubcommand {
     Shell(String),
+    #[default]
     Devices,
     Install {
         apk: String,
@@ -56,12 +57,6 @@ pub enum AdbSubcommand {
         port: Option<u16>,
         all: bool,
     },
-}
-
-impl Default for AdbSubcommand {
-    fn default() -> Self {
-        Self::Devices
-    }
 }
 
 impl AdbCommand {
@@ -286,12 +281,10 @@ impl AdbCommand {
             }
             AdbSubcommand::Disconnect { host, port, all } => {
                 cmd.arg("disconnect");
-                if !all {
-                    if let Some(h) = host {
-                        let p = port.unwrap_or(5555);
-                        let addr = format!("{}:{}", h, p);
-                        cmd.arg(&addr);
-                    }
+                if !all && let Some(h) = host {
+                    let p = port.unwrap_or(5555);
+                    let addr = format!("{}:{}", h, p);
+                    cmd.arg(&addr);
                 }
             }
         }
