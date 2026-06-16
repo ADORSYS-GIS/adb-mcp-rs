@@ -31,7 +31,7 @@ schemars = "1"
 clap = { version = "4.6.1", features = ["derive", "env"] }
 cuid2 = "0.1.4"
 thiserror = "2.0.18"
-tower-http = { version = "0.6.8", features = ["cors"] }
+tower-http = { version = "0.7.0", features = ["cors"] }
 axum = { version = "0.8.9", features = ["tokio"] }
 http = "1.4.0"
 axum-server = "0.8.0"
