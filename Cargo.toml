@@ -29,7 +29,7 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 mimalloc = "0.1"
 schemars = "1"
 clap = { version = "4.6.1", features = ["derive", "env"] }
-cuid2 = "0.1.4"
+cuid2 = "0.1.6"
 thiserror = "2.0.18"
 tower-http = { version = "0.7.0", features = ["cors"] }
 axum = { version = "0.8.9", features = ["tokio"] }
